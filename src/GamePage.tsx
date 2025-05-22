@@ -75,13 +75,22 @@ const GamePage: React.FC<GamePageProps> = ({ level, onLevelComplete }) => {
     }, [level]);
 
     useEffect(() => {
+        console.log("useEffect triggered for flippedCards. Length:", flippedCards.length);
         if (flippedCards.length === 2) {
             setIsChecking(true);
             const [index1, index2] = flippedCards;
             const card1 = cards[index1];
             const card2 = cards[index2];
 
+            console.log("Comparing cards:", {
+                card1Id: card1.originalId,
+                card1UniqueId: card1.uniqueId,
+                card2Id: card2.originalId,
+                card2UniqueId: card2.uniqueId,
+            });
+
             if (card1.originalId === card2.originalId && card1.uniqueId !== card2.uniqueId) {
+                console.log("Match found!");
                 setCards((prevCards) =>
                     prevCards.map((card, idx) =>
                         idx === index1 || idx === index2 ? { ...card, isMatched: true } : card
@@ -91,6 +100,7 @@ const GamePage: React.FC<GamePageProps> = ({ level, onLevelComplete }) => {
                 setFlippedCards([]);
                 setIsChecking(false);
             } else {
+                console.log("No match.");
                 timeoutRef.current = setTimeout(() => {
                     setCards((prevCards) =>
                         prevCards.map((card, idx) =>
@@ -122,6 +132,13 @@ const GamePage: React.FC<GamePageProps> = ({ level, onLevelComplete }) => {
 
     const handleCardClick = (index: number) => {
         if (isChecking || cards[index].isFlipped || cards[index].isMatched) {
+            console.log("Card click ignored:", {
+                index,
+                isChecking,
+                isFlipped: cards[index].isFlipped,
+                isMatched: cards[index].isMatched,
+                flippedCardsLength: flippedCards.length
+            });
             return;
         }
 
@@ -130,7 +147,11 @@ const GamePage: React.FC<GamePageProps> = ({ level, onLevelComplete }) => {
                 idx === index ? { ...card, isFlipped: true } : card
             )
         );
-        setFlippedCards((prevFlipped) => [...prevFlipped, index]);
+        setFlippedCards((prevFlipped) => {
+            const newFlipped = [...prevFlipped, index];
+            console.log("Flipped cards updated:", newFlipped);
+            return newFlipped;
+        });
     };
 
     const gridSizeStyle = {
