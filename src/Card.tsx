@@ -1,12 +1,11 @@
 // src/Card.tsx
-
 import React from 'react';
-import type { DisplayOption } from './data'; // Ajout du mot-clé 'type'
+import type { DisplayOption } from './data';
 import './styles.css';
 
 interface CardProps {
-    cardId: string; // L'ID original de la paire pour la correspondance
-    display: DisplayOption; // Ce qui doit être affiché sur cette carte
+    cardId: string;
+    display: DisplayOption;
     isFlipped: boolean;
     isMatched: boolean;
     onClick: () => void;
@@ -17,20 +16,16 @@ const Card: React.FC<CardProps> = ({ cardId, display, isFlipped, isMatched, onCl
         isMatched ? 'matched' : ''
     }`;
 
-    // Helper pour rendre le contenu visuel en fonction du type de carte
     const renderCardContent = () => {
         if (display.type === 'name') {
-            // Pour une carte "nom"
             return (
                 <div className="card-name-content" style={display.style}>
-                    {display.content || ''} {/* Affiche le nom ou rien si vide */}
+                    {display.content || ''}
                 </div>
             );
         } else {
-            // Pour une carte "visuel"
             return (
-                <div className="card-visual-content"> {/* Le style de display.style est appliqué ici */}
-                    {/* Rendu des éléments DOM réels qui montrent l'effet CSS */}
+                <div className="card-visual-content">
                     {cardId === 'font-size-2em' && <span style={{ fontSize: '2em' }}>Texte Grand</span>}
                     {cardId === 'font-weight-bold' && <span style={{ fontWeight: 'bold' }}>Texte Gras</span>}
                     {cardId === 'font-style-italic' && <em style={{ fontStyle: 'italic' }}>Texte Italique</em>}
@@ -89,7 +84,6 @@ const Card: React.FC<CardProps> = ({ cardId, display, isFlipped, isMatched, onCl
                     )}
                     {cardId === 'outline-2px-solid' && <div className="visual-box" style={{ outline: '2px solid orange', outlineOffset: '3px' }}>Contour</div>}
                     {cardId === 'text-overflow-ellipsis' && <div className="visual-overflow-ellipsis-box">Ceci est un texte très long qui devrait être tronqué avec des points de suspension à la fin.</div>}
-                    {/* Fallback si pas de cas spécifique - idéalement, il ne devrait plus y en avoir */}
                     {!display.content && <div className="card-visual-hint-default">?</div>}
                 </div>
             );
@@ -99,10 +93,8 @@ const Card: React.FC<CardProps> = ({ cardId, display, isFlipped, isMatched, onCl
     return (
         <div className={cardClassName} onClick={onClick}>
             <div className="card-inner">
-                <div className="card-front"></div> {/* Face cachée de la carte */}
+                <div className="card-front"></div>
                 <div className="card-back" style={display.type === 'visual' ? display.style : {}}>
-                    {/* Le style de display.style est maintenant appliqué sur la face arrière pour 'visual' */}
-                    {/* Et le contenu est rendu par renderCardContent */}
                     {renderCardContent()}
                 </div>
             </div>

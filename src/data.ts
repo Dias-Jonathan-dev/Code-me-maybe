@@ -1,29 +1,26 @@
 // src/data.ts
-
 import type { CSSProperties } from 'react';
 
-// Définition de la structure de chaque "côté" d'une carte de paire
 export interface DisplayOption {
     type: 'name' | 'visual';
-    content: string; // Le texte à afficher (pour 'name') ou une description/clé pour 'visual'
-    style: CSSProperties; // Les styles CSS à appliquer
+    content: string;
+    style: CSSProperties;
 }
 
 export interface CssPair {
-    id: string; // ID unique pour la paire (ex: 'font-weight-bold')
-    nameCard: DisplayOption; // Ce qui est affiché sur la carte "nom"
-    visualCard: DisplayOption; // Ce qui est affiché sur la carte "visuel"
+    id: string;
+    nameCard: DisplayOption;
+    visualCard: DisplayOption;
 }
 
 export interface GameLevel {
     id: number;
-    pairs: CssPair[]; // Les paires uniques pour ce niveau
-    showNamesOnNameCard: boolean; // Si le texte (name.content) est affiché sur la carte "nom"
-    showVisualOnNameCard: boolean; // Si l'effet visuel est aussi appliqué sur la carte "nom" (pour transition)
+    pairs: CssPair[];
+    showNamesOnNameCard: boolean;
+    showVisualOnNameCard: boolean;
     gridSize: number;
 }
 
-// Fonction utilitaire pour mélanger un tableau
 const shuffleArray = <T>(array: T[]): T[] => {
     let currentIndex = array.length,
         randomIndex;
@@ -38,7 +35,6 @@ const shuffleArray = <T>(array: T[]): T[] => {
     return array;
 };
 
-// --- Définition de toutes les paires possibles ---
 const allPossibleCssPairs: CssPair[] = [
     {
         id: 'font-size-2em',
@@ -212,20 +208,16 @@ const allPossibleCssPairs: CssPair[] = [
     },
 ];
 
-
-// Helper pour obtenir des paires uniques pour un niveau
 function getUniquePairs(sourcePairs: CssPair[], count: number): CssPair[] {
     if (count > sourcePairs.length) {
         console.warn(`Not enough unique CSS pairs available for ${count} pairs. Only ${sourcePairs.length} pairs exist.`);
-        return shuffleArray([...sourcePairs]); // Retourne toutes les paires disponibles si pas assez
+        return shuffleArray([...sourcePairs]);
     }
     return shuffleArray([...sourcePairs]).slice(0, count);
 }
 
-// --- Niveaux du jeu ---
 export const allLevels: GameLevel[] = [];
 
-// Niveau 1: 4 paires (8 cartes), grille 3x3, noms visibles, pas de style visuel sur la carte "nom"
 allLevels.push({
     id: 1,
     pairs: getUniquePairs(allPossibleCssPairs, 4),
@@ -234,7 +226,6 @@ allLevels.push({
     gridSize: 3,
 });
 
-// Niveau 2: 6 paires (12 cartes), grille 4x4, noms visibles, pas de style visuel sur la carte "nom"
 allLevels.push({
     id: 2,
     pairs: getUniquePairs(allPossibleCssPairs, 6),
@@ -243,43 +234,38 @@ allLevels.push({
     gridSize: 4,
 });
 
-// Niveau 3: 8 paires (16 cartes), grille 4x4, noms visibles, un peu de style visuel sur la carte "nom" pour commencer la transition
 allLevels.push({
     id: 3,
     pairs: getUniquePairs(allPossibleCssPairs, 8),
     showNamesOnNameCard: true,
-    showVisualOnNameCard: true, // Commence à appliquer le style visuel sur la carte nom
+    showVisualOnNameCard: true,
     gridSize: 4,
 });
 
-// Niveau 4: 10 paires (20 cartes), grille 5x4 (pour 20 cartes), noms visibles, style visuel sur la carte "nom"
 allLevels.push({
     id: 4,
     pairs: getUniquePairs(allPossibleCssPairs, 10),
     showNamesOnNameCard: true,
     showVisualOnNameCard: true,
-    gridSize: 5, // Cela créera une grille 5x4 si 20 cartes
+    gridSize: 5,
 });
 
-// Niveau 5: 12 paires (24 cartes), grille 5x5 (pour 25 cases, une vide), noms cachés sur la carte "nom"
 allLevels.push({
     id: 5,
     pairs: getUniquePairs(allPossibleCssPairs, 12),
-    showNamesOnNameCard: false, // Les noms commencent à disparaître ici
+    showNamesOnNameCard: false,
     showVisualOnNameCard: true,
     gridSize: 5,
 });
 
-// Niveau 6: 15 paires (30 cartes), grille 6x5 (pour 30 cartes), noms cachés, style visuel prédominant
 allLevels.push({
     id: 6,
     pairs: getUniquePairs(allPossibleCssPairs, 15),
     showNamesOnNameCard: false,
     showVisualOnNameCard: true,
-    gridSize: 6, // Cela créera une grille 6x5 pour 30 cartes
+    gridSize: 6,
 });
 
-// Niveau 7: 18 paires (36 cartes), grille 6x6, noms cachés, focus sur le visuel
 allLevels.push({
     id: 7,
     pairs: getUniquePairs(allPossibleCssPairs, 18),
@@ -288,7 +274,6 @@ allLevels.push({
     gridSize: 6,
 });
 
-// Niveau 8: 20 paires (40 cartes), grille 7x6 (pour 42 cases, 2 vides), noms cachés
 allLevels.push({
     id: 8,
     pairs: getUniquePairs(allPossibleCssPairs, 20),
@@ -297,7 +282,6 @@ allLevels.push({
     gridSize: 7,
 });
 
-// Niveau 9: 22 paires (44 cartes), grille 7x7 (pour 49 cases, 5 vides), noms cachés
 allLevels.push({
     id: 9,
     pairs: getUniquePairs(allPossibleCssPairs, 22),
@@ -306,7 +290,6 @@ allLevels.push({
     gridSize: 7,
 });
 
-// Niveau 10: 25 paires (50 cartes), grille 8x7 (pour 56 cases, 6 vides), noms cachés
 allLevels.push({
     id: 10,
     pairs: getUniquePairs(allPossibleCssPairs, 25),
