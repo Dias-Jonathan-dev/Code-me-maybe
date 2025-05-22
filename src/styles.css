@@ -1,368 +1,371 @@
 /* src/styles.css */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #e0e7f2;
-    margin: 0;
-    color: #333;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #e0e7f2;
+  margin: 0;
+  color: #333;
 }
 
 .app-container {
-    text-align: center;
-    background-color: #ffffff;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-    max-width: 90%;
-    box-sizing: border-box;
+  text-align: center;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  max-width: 90%;
+  box-sizing: border-box;
 }
 
 .game-page h2 {
-    color: #2c3e50;
-    margin-bottom: 20px;
-    font-size: 2.2em;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  font-size: 2.2em;
 }
 
 .game-page p {
-    color: #555;
-    margin-bottom: 25px;
-    font-size: 1.1em;
+  color: #555;
+  margin-bottom: 25px;
+  font-size: 1.1em;
 }
 
 .grid-container {
-    display: grid;
-    gap: 12px;
-    padding: 10px;
-    margin: 0 auto;
-    justify-content: center;
-    align-items: center;
+  display: grid;
+  gap: 12px;
+  padding: 10px;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
 }
 
 .card {
-    width: 100px;
-    height: 100px;
-    perspective: 1000px;
-    cursor: pointer;
-    border-radius: 10px;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease-out;
+  width: 100px;
+  height: 100px;
+  perspective: 1000px;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-out;
 }
 
 .card:hover {
-    transform: translateY(-3px);
+  transform: translateY(-3px);
 }
 
 .card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.6s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-    transform-style: preserve-3d;
-    border-radius: 10px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  transform-style: preserve-3d;
+  border-radius: 10px;
 }
 
 .card.flipped .card-inner {
-    transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 
 .card-front,
 .card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 8px;
-    box-sizing: border-box;
-    overflow: hidden;
-    font-size: 0.9em;
-    font-weight: 500;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  box-sizing: border-box;
+  overflow: hidden;
+  font-size: 0.9em;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .card-front {
-    background-color: #5d5d81;
-    color: #fff;
-    font-size: 2.5em;
-    font-weight: bold;
-    user-select: none;
+  background-color: #5d5d81;
+  color: #fff;
+  font-size: 2.5em;
+  font-weight: bold;
+  user-select: none;
 }
 
 .card-back {
-    background-color: #fcfcfc;
-    color: #333;
-    transform: rotateY(180deg);
-    border: 2px solid #ddd;
-    transition: border-color 0.3s ease;
+  background-color: #fcfcfc;
+  color: #333;
+  transform: rotateY(180deg);
+  border: 2px solid #ddd;
+  transition: border-color 0.3s ease;
 }
 
 .card.matched .card-back {
-    border-color: #4CAF50;
-    box-shadow: 0 0 12px #4CAF50;
+  border-color: #4caf50;
+  box-shadow: 0 0 12px #4caf50;
 }
 
 .card-name-content {
-    font-weight: bold;
-    color: #333;
-    word-break: break-word;
-    text-align: center;
-    padding: 2px;
-    display: block;
-    line-height: 1.2;
-    font-size: 0.9em;
-    width: 100%;
+  font-weight: bold;
+  color: #333;
+  word-break: break-word;
+  text-align: center;
+  padding: 2px;
+  display: block;
+  line-height: 1.2;
+  font-size: 0.9em;
+  width: 100%;
 }
 
 .card-visual-content {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    overflow: hidden;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  overflow: hidden;
 }
 
 .card-visual-content span,
 .card-visual-content em,
 .card-visual-content div,
 .card-visual-content s {
-    margin: 0;
-    line-height: 1.1;
-    max-width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: normal;
-    box-sizing: border-box;
+  margin: 0;
+  line-height: 1.1;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  box-sizing: border-box;
 }
 
 .visual-box {
-    width: 80%;
-    height: 80%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-    font-size: 0.8em;
-    border: 1px solid #ddd;
-    background-color: white;
+  width: 80%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  font-size: 0.8em;
+  border: 1px solid #ddd;
+  background-color: white;
 }
 
 .visual-full-box {
-    width: 100%;
-    height: 100%;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .visual-box-shadow {
-    box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
 
 .visual-margin-auto {
-    margin: auto;
-    width: 80%;
-    border: 1px solid blue;
-    height: 50px;
+  margin: auto;
+  width: 80%;
+  border: 1px solid blue;
+  height: 50px;
 }
 
 .visual-circle {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .visual-flex-container {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    border: 1px dashed grey;
-    box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px dashed grey;
+  box-sizing: border-box;
 }
 
 .visual-flex-column {
-    flex-direction: column;
+  flex-direction: column;
 }
 
 .visual-justify-center {
-    justify-content: center;
+  justify-content: center;
 }
 
 .visual-align-center {
-    align-items: center;
+  align-items: center;
 }
 
 .flex-item {
-    width: 25px;
-    height: 25px;
-    background-color: #a0d9e7;
-    border: 1px solid #7cb9d1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 2px;
-    font-size: 0.7em;
+  width: 25px;
+  height: 25px;
+  background-color: #a0d9e7;
+  border: 1px solid #7cb9d1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2px;
+  font-size: 0.7em;
 }
 
 .visual-positioned-box {
-    width: 50px;
-    height: 50px;
-    background-color: #ccffcc;
-    border: 1px solid green;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 0.7em;
-    box-sizing: border-box;
+  width: 50px;
+  height: 50px;
+  background-color: #ccffcc;
+  border: 1px solid green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.7em;
+  box-sizing: border-box;
 }
 
 .visual-relative {
-    position: relative;
-    top: 10px;
-    left: 10px;
-    background-color: #ccffcc;
+  position: relative;
+  top: 10px;
+  left: 10px;
+  background-color: #ccffcc;
 }
 
 .visual-absolute {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: #ffcccc;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #ffcccc;
 }
 
 .visual-z-index-high {
-    position: relative;
-    z-index: 10;
-    background-color: #f0f0f0;
-    border: 1px dashed black;
+  position: relative;
+  z-index: 10;
+  background-color: #f0f0f0;
+  border: 1px dashed black;
 }
 
 .visual-overflow-box {
-    width: 90%;
-    height: 90%;
-    border: 1px solid #ccc;
-    font-size: 0.8em;
-    white-space: nowrap;
-    box-sizing: border-box;
-    padding: 5px;
+  width: 90%;
+  height: 90%;
+  border: 1px solid #ccc;
+  font-size: 0.8em;
+  white-space: nowrap;
+  box-sizing: border-box;
+  padding: 5px;
 }
 
 .visual-width-box {
-    height: 30px;
-    background-color: #ffe0b2;
-    border: 1px solid orange;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 0.8em;
+  height: 30px;
+  background-color: #ffe0b2;
+  border: 1px solid orange;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8em;
 }
 
 .visual-height-box {
-    width: 30px;
-    background-color: #b2e0ff;
-    border: 1px solid blue;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 0.8em;
+  width: 30px;
+  background-color: #b2e0ff;
+  border: 1px solid blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8em;
 }
 
 .card-visual-hint-default {
-    font-size: 2em;
-    color: #ccc;
+  font-size: 2em;
+  color: #ccc;
 }
 
 .hover-effect:hover {
-    background-color: steelblue !important;
-    transform: scale(1.1);
-    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  background-color: steelblue !important;
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
 
 .visual-flex-wrap {
-    flex-wrap: wrap;
-    align-content: flex-start;
+  flex-wrap: wrap;
+  align-content: flex-start;
 }
 
 .visual-align-self-parent {
-    display: flex;
-    height: 100%;
-    width: 100%;
-    border: 1px dashed grey;
-    align-items: flex-start;
-    justify-content: space-around;
-    box-sizing: border-box;
-    padding: 5px;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  border: 1px dashed grey;
+  align-items: flex-start;
+  justify-content: space-around;
+  box-sizing: border-box;
+  padding: 5px;
 }
 
 .visual-align-self-child {
-    align-self: flex-end;
-    background-color: #ffcc99;
-    border: 1px solid orange;
+  align-self: flex-end;
+  background-color: #ffcc99;
+  border: 1px solid orange;
 }
 
 .visual-overflow-ellipsis-box {
-    width: 90%;
-    height: 90%;
-    border: 1px solid #ccc;
-    font-size: 0.8em;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    box-sizing: border-box;
-    padding: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 90%;
+  height: 90%;
+  border: 1px solid #ccc;
+  font-size: 0.8em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .empty-card {
-    width: 100px;
-    height: 100px;
-    background-color: #f0f0f0;
-    visibility: hidden;
+  width: 100px;
+  height: 100px;
+  background-color: #f0f0f0;
+  visibility: hidden;
 }
 
 @media (max-width: 600px) {
-    .card, .empty-card {
-        width: 80px;
-        height: 80px;
-    }
-    .card-name-content {
-        font-size: 0.7em;
-    }
+  .card,
+  .empty-card {
+    width: 80px;
+    height: 80px;
+  }
+  .card-name-content {
+    font-size: 0.7em;
+  }
 }
 
 @media (min-width: 601px) and (max-width: 900px) {
-    .card, .empty-card {
-        width: 90px;
-        height: 90px;
-    }
-    .card-name-content {
-        font-size: 0.8em;
-    }
+  .card,
+  .empty-card {
+    width: 90px;
+    height: 90px;
+  }
+  .card-name-content {
+    font-size: 0.8em;
+  }
 }
 
 @media (min-width: 901px) {
-    .card, .empty-card {
-        width: 100px;
-        height: 100px;
-    }
-    .card-name-content {
-        font-size: 0.9em;
-    }
+  .card,
+  .empty-card {
+    width: 100px;
+    height: 100px;
+  }
+  .card-name-content {
+    font-size: 0.9em;
+  }
 }

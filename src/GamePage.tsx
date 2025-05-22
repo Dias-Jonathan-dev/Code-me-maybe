@@ -1,7 +1,7 @@
 // src/GamePage.tsx
 import React, { useState, useEffect, useRef } from 'react';
 import Card from './Card';
-import type { GameLevel, DisplayOption } from './data';
+import type { DisplayOption, GameLevel } from './data';
 import './styles.css';
 
 interface GamePageProps {
