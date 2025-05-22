@@ -118,6 +118,31 @@ body {
     line-height: 1.2;
     font-size: 0.9em;
     width: 100%;
+    /* Assure que le texte est visible même si un style visuel est appliqué */
+    position: relative; /* Pour que z-index fonctionne */
+    z-index: 2; /* Pour être au-dessus des éléments visuels */
+    background-color: rgba(255, 255, 255, 0.7); /* Petit fond semi-transparent pour la lisibilité */
+    border-radius: 5px;
+    padding: 2px 5px;
+}
+
+/* Nouvelle classe pour le texte du nom superposé sur le visuel */
+.card-name-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    background-color: rgba(255, 255, 255, 0.8); /* Fond blanc semi-transparent */
+    padding: 3px 6px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #333;
+    white-space: nowrap; /* Empêche le retour à la ligne si possible */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 90%; /* Limite la largeur pour éviter le débordement */
+    box-sizing: border-box;
 }
 
 .card-visual-content {
@@ -129,6 +154,7 @@ body {
     flex-direction: column;
     text-align: center;
     overflow: hidden;
+    position: relative; /* Pour positionner l'overlay de texte */
 }
 
 .card-visual-content span,
@@ -345,6 +371,9 @@ body {
     .card-name-content {
         font-size: 0.7em;
     }
+    .card-name-overlay {
+        font-size: 0.7em;
+    }
 }
 
 @media (min-width: 601px) and (max-width: 900px) {
@@ -355,6 +384,9 @@ body {
     .card-name-content {
         font-size: 0.8em;
     }
+    .card-name-overlay {
+        font-size: 0.8em;
+    }
 }
 
 @media (min-width: 901px) {
@@ -363,6 +395,9 @@ body {
         height: 100px;
     }
     .card-name-content {
+        font-size: 0.9em;
+    }
+    .card-name-overlay {
         font-size: 0.9em;
     }
 }

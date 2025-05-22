@@ -17,7 +17,7 @@ export interface GameLevel {
     id: number;
     pairs: CssPair[];
     showNamesOnNameCard: boolean;
-    showVisualOnNameCard: boolean;
+    showVisualOnNameCard: boolean; // <-- Cette propriété est la clé
     gridSize: number;
 }
 
@@ -222,7 +222,7 @@ allLevels.push({
     id: 1,
     pairs: getUniquePairs(allPossibleCssPairs, 4),
     showNamesOnNameCard: true,
-    showVisualOnNameCard: false,
+    showVisualOnNameCard: false, // Niveau 1: Noms visibles, pas de style visuel sur la carte "nom"
     gridSize: 3,
 });
 
@@ -230,7 +230,7 @@ allLevels.push({
     id: 2,
     pairs: getUniquePairs(allPossibleCssPairs, 6),
     showNamesOnNameCard: true,
-    showVisualOnNameCard: false,
+    showVisualOnNameCard: false, // Niveau 2: Noms visibles, pas de style visuel sur la carte "nom"
     gridSize: 4,
 });
 
@@ -238,7 +238,7 @@ allLevels.push({
     id: 3,
     pairs: getUniquePairs(allPossibleCssPairs, 8),
     showNamesOnNameCard: true,
-    showVisualOnNameCard: true,
+    showVisualOnNameCard: true, // Niveau 3: Noms visibles, avec style visuel sur la carte "nom"
     gridSize: 4,
 });
 
@@ -253,8 +253,8 @@ allLevels.push({
 allLevels.push({
     id: 5,
     pairs: getUniquePairs(allPossibleCssPairs, 12),
-    showNamesOnNameCard: false,
-    showVisualOnNameCard: true,
+    showNamesOnNameCard: false, // Noms cachés sur la carte "nom"
+    showVisualOnNameCard: true, // Mais le style visuel est là
     gridSize: 5,
 });
 

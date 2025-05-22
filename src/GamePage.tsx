@@ -32,6 +32,7 @@ const generateLevelCards = (level: GameLevel): GridCardState[] => {
     const pairsToUse = level.pairs;
 
     pairsToUse.forEach((pair, index) => {
+        // Carte pour le nom de la propriété CSS
         cards.push({
             originalId: pair.id,
             uniqueId: `${pair.id}-name-${index}-${Math.random()}`,
@@ -40,15 +41,16 @@ const generateLevelCards = (level: GameLevel): GridCardState[] => {
                 content: level.showNamesOnNameCard ? pair.nameCard.content : '',
                 style: level.showVisualOnNameCard ? pair.visualCard.style : pair.nameCard.style,
             },
-            isFlipped: false,
+            isFlipped: true, // La carte "nom" est Flipped par défaut (visible)
             isMatched: false,
         });
 
+        // Carte pour la représentation visuelle
         cards.push({
             originalId: pair.id,
             uniqueId: `${pair.id}-visual-${index}-${Math.random()}`,
             display: pair.visualCard,
-            isFlipped: false,
+            isFlipped: false, // La carte "visuelle" n'est PAS flipped par défaut (face cachée)
             isMatched: false,
         });
     });
@@ -81,23 +83,41 @@ const GamePage: React.FC<GamePageProps> = ({ level, onLevelComplete }) => {
             const card1 = cards[index1];
             const card2 = cards[index2];
 
-            if (card1.originalId === card2.originalId && card1.uniqueId !== card2.uniqueId) {
+            // S'assurer que l'une est une carte 'name' et l'autre une carte 'visual'
+            const isNameCard1 = card1.display.type === 'name';
+            const isNameCard2 = card2.display.type === 'name';
+
+            let matched = false;
+            // Une paire est valide si une est 'name', l'autre 'visual', et leurs originalId correspondent
+            if (
+                (isNameCard1 && !isNameCard2 && card1.originalId === card2.originalId) ||
+                (!isNameCard1 && isNameCard2 && card1.originalId === card2.originalId)
+            ) {
+                matched = true;
+            }
+
+            if (matched) {
                 setCards((prevCards) =>
                     prevCards.map((card, idx) =>
                         idx === index1 || idx === index2 ? { ...card, isMatched: true } : card
                     )
                 );
                 setMatchesFound((prev) => prev + 1);
-                setFlippedCards([]);
+                setFlippedCards([]); // Réinitialise les cartes sélectionnées
                 setIsChecking(false);
             } else {
                 timeoutRef.current = setTimeout(() => {
                     setCards((prevCards) =>
-                        prevCards.map((card, idx) =>
-                            idx === index1 || idx === index2 ? { ...card, isFlipped: false } : card
-                        )
+                        prevCards.map((card, idx) => {
+                            // Si la carte n'est PAS une carte 'name' et n'est PAS matched, la retourner
+                            // Cela signifie que seules les cartes 'visual' non-matched se retournent.
+                            if ((idx === index1 || idx === index2) && card.display.type !== 'name' && !card.isMatched) {
+                                return { ...card, isFlipped: false };
+                            }
+                            return card;
+                        })
                     );
-                    setFlippedCards([]);
+                    setFlippedCards([]); // Réinitialise les cartes sélectionnées
                     setIsChecking(false);
                 }, 1200);
             }
@@ -121,17 +141,78 @@ const GamePage: React.FC<GamePageProps> = ({ level, onLevelComplete }) => {
     }, []);
 
     const handleCardClick = (index: number) => {
-        if (isChecking || cards[index].isFlipped || cards[index].isMatched) {
+        const clickedCard = cards[index];
+
+        // Empêcher le clic si une vérification est en cours
+        if (isChecking) {
             return;
         }
 
-        setCards((prevCards) =>
-            prevCards.map((card, idx) =>
-                idx === index ? { ...card, isFlipped: true } : card
-            )
-        );
-        setFlippedCards((prevFlipped) => [...prevFlipped, index]);
+        // Empêcher le clic si la carte est déjà trouvée
+        if (clickedCard.isMatched) {
+            return;
+        }
+
+        // Empêcher de cliquer une carte déjà retournée (sauf si elle est déjà dans flippedCards et qu'on reclique dessus)
+        // Nous voulons permettre de cliquer sur les cartes "name" (qui sont isFlipped par défaut)
+        // mais seulement si elles ne sont pas déjà dans la liste des cartes retournées pour cette tentative de paire.
+        if (flippedCards.includes(index)) { // Si la carte est déjà dans flippedCards (cliquée une première fois)
+            return; // Ne rien faire, elle est déjà sélectionnée
+        }
+
+
+        // Si c'est la première carte cliquée (aucun flippedCards)
+        if (flippedCards.length === 0) {
+            // Si c'est une carte 'name' qui est déjà flipped, on l'ajoute directement à flippedCards.
+            // Si c'est une carte 'visual' qui n'est pas flipped, on la retourne et on l'ajoute.
+            setCards((prevCards) =>
+                prevCards.map((card, idx) =>
+                    idx === index && card.display.type === 'visual' ? { ...card, isFlipped: true } : card // Ne retourner visuellement que les cartes 'visual'
+                )
+            );
+            setFlippedCards([index]);
+        }
+        // Si c'est la deuxième carte cliquée
+        else if (flippedCards.length === 1) {
+            const firstFlippedIndex = flippedCards[0];
+            const firstFlippedCard = cards[firstFlippedIndex];
+
+            // Empêcher de cliquer la même carte deux fois
+            if (index === firstFlippedIndex) {
+                return;
+            }
+
+            // Vérifier que la première carte est une carte "name" ET la deuxième une "visual"
+            // OU la première est une "visual" ET la deuxième une "name"
+            const isFirstName = firstFlippedCard.display.type === 'name';
+            const isClickedName = clickedCard.display.type === 'name';
+
+            if ( (isFirstName && !isClickedName) || (!isFirstName && isClickedName) ) {
+                // C'est une combinaison valide (name/visual ou visual/name)
+                setCards((prevCards) =>
+                    prevCards.map((card, idx) =>
+                        idx === index ? { ...card, isFlipped: true } : card // Retourner la deuxième carte cliquée (qu'elle soit name ou visual)
+                    )
+                );
+                setFlippedCards((prevFlipped) => [...prevFlipped, index]);
+            } else {
+                // Clic sur deux cartes du même type (ex: deux 'name' ou deux 'visual') sans correspondance immédiate.
+                // On pourrait ajouter un feedback visuel ici si souhaité.
+                // Pour l'instant, on réinitialise simplement pour forcer un nouveau choix après un délai.
+                // Mais pour la logique, on va juste ignorer ce clic ou le laisser être traité par le setTimeout s'il y a 2 cartes de ce type
+                // Le cas le plus simple est de réinitialiser et laisser l'utilisateur rechoisir.
+                // Ou bien de gérer ce cas spécifique comme un "non-match" et de ne retourner que la carte visual.
+                // Laissons le useEffect gérer le non-match après l'ajout à flippedCards.
+                setCards((prevCards) =>
+                    prevCards.map((card, idx) =>
+                        idx === index ? { ...card, isFlipped: true } : card // Retourner la deuxième carte pour qu'elle soit visible pendant la vérification
+                    )
+                );
+                setFlippedCards((prevFlipped) => [...prevFlipped, index]);
+            }
+        }
     };
+
 
     const gridSizeStyle = {
         gridTemplateColumns: `repeat(${level.gridSize}, 1fr)`,
@@ -148,7 +229,7 @@ const GamePage: React.FC<GamePageProps> = ({ level, onLevelComplete }) => {
                         key={card.uniqueId}
                         cardId={card.originalId}
                         display={card.display}
-                        isFlipped={card.isFlipped || card.isMatched}
+                        isFlipped={card.isFlipped}
                         isMatched={card.isMatched}
                         onClick={() => handleCardClick(index)}
                     />
