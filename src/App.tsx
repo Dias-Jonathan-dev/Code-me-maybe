@@ -1,9 +1,8 @@
-// src/App.tsx
-import type React from "react";
+import type React from "react"; // 'React' import est optionnel pour React 17+ avec JSX transform
 import { useState } from "react";
 import GamePage from "./GamePage";
 import { allLevels } from "./data";
-import type { GameLevel } from "./data";
+import type { GameLevel } from "./data"; // <-- Correction ici: import type
 import "./styles.css";
 
 const App: React.FC = () => {
@@ -25,7 +24,10 @@ const App: React.FC = () => {
       <div className="app-container">
         <h1>Jeu de Paires CSS</h1>
         <p>Chargement des niveaux...</p>
-        <button onClick={() => setCurrentLevelIndex(0)}>Recommencer</button>
+        {/* CORRECTION: Ajout de type="button" */}
+        <button type="button" onClick={() => setCurrentLevelIndex(0)}>
+          Recommencer
+        </button>
       </div>
     );
   }
