@@ -7,27 +7,27 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import EndPage from "./Components/EndPage.tsx";
 
 const router = createBrowserRouter([
-	{
-		path: "/",
-		element: <HomePage />,
-	},
-	{
-		path: "/game",
-		element: <App />,
-	},
-	{
-		path: "/end",
-		element: <EndPage />,
-	},
+  {
+    path: "/",
+    element: <HomePage />,
+  },
+  {
+    path: "/game",
+    element: <App />,
+  },
+  {
+    path: "/end",
+    element: <EndPage />,
+  },
 ]);
 
 const rootElement = document.getElementById("root");
 if (rootElement == null) {
-	throw new Error(`Your HTML Document should contain a <div id="root"></div>`);
+  throw new Error(`Your HTML Document should contain a <div id="root"></div>`);
 }
 
 createRoot(rootElement).render(
-	<StrictMode>
-		<RouterProvider router={router} />
-	</StrictMode>,
+  <StrictMode>
+    <RouterProvider router={router} />
+  </StrictMode>,
 );
