@@ -1,9 +1,8 @@
 // src/App.tsx
-
 import React, { useState } from 'react';
 import GamePage from './GamePage';
 import { allLevels } from './data';
-import type { GameLevel } from './data'; // Ajout du mot-clé 'type'
+import type { GameLevel } from './data';
 import './styles.css';
 
 const App: React.FC = () => {
@@ -14,11 +13,10 @@ const App: React.FC = () => {
             setCurrentLevelIndex((prevIndex) => prevIndex + 1);
         } else {
             alert('Félicitations ! Vous avez terminé tous les niveaux !');
-            setCurrentLevelIndex(0); // Recommencer le jeu ou afficher un écran de fin
+            setCurrentLevelIndex(0);
         }
     };
 
-    // S'assurer que le niveau existe avant de le passer à GamePage
     const currentLevel: GameLevel | undefined = allLevels[currentLevelIndex];
 
     if (!currentLevel) {

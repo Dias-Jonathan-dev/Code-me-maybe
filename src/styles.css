@@ -1,5 +1,4 @@
 /* src/styles.css */
-
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
@@ -42,7 +41,6 @@ body {
     align-items: center;
 }
 
-/* Styles pour la carte */
 .card {
     width: 100px;
     height: 100px;
@@ -62,7 +60,7 @@ body {
     width: 100%;
     height: 100%;
     text-align: center;
-    transition: transform 0.6s cubic-bezier(0.455, 0.03, 0.515, 0.955); /* Smoother flip */
+    transition: transform 0.6s cubic-bezier(0.455, 0.03, 0.515, 0.955);
     transform-style: preserve-3d;
     border-radius: 10px;
 }
@@ -90,14 +88,15 @@ body {
 }
 
 .card-front {
-    background-color: #5d5d81; /* Couleur dos de carte */
+    background-color: #5d5d81;
     color: #fff;
     font-size: 2.5em;
     font-weight: bold;
+    user-select: none;
 }
 
 .card-back {
-    background-color: #fcfcfc; /* Couleur face avant de carte */
+    background-color: #fcfcfc;
     color: #333;
     transform: rotateY(180deg);
     border: 2px solid #ddd;
@@ -105,11 +104,10 @@ body {
 }
 
 .card.matched .card-back {
-    border-color: #4CAF50; /* Bordure verte pour les paires trouvées */
+    border-color: #4CAF50;
     box-shadow: 0 0 12px #4CAF50;
 }
 
-/* Styles pour le contenu des cartes */
 .card-name-content {
     font-weight: bold;
     color: #333;
@@ -128,12 +126,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column; /* Par défaut, pour organiser les éléments */
+    flex-direction: column;
     text-align: center;
     overflow: hidden;
 }
 
-/* Styles des éléments visuels spécifiques */
 .card-visual-content span,
 .card-visual-content em,
 .card-visual-content div,
@@ -155,8 +152,8 @@ body {
     align-items: center;
     box-sizing: border-box;
     font-size: 0.8em;
-    border: 1px solid #ddd; /* Bordure par défaut pour ces boîtes */
-    background-color: white; /* Fond par défaut */
+    border: 1px solid #ddd;
+    background-color: white;
 }
 
 .visual-full-box {
@@ -174,7 +171,7 @@ body {
 
 .visual-margin-auto {
     margin: auto;
-    width: 80%; /* Pour démontrer l'effet du margin: auto */
+    width: 80%;
     border: 1px solid blue;
     height: 50px;
 }
@@ -253,7 +250,6 @@ body {
     z-index: 10;
     background-color: #f0f0f0;
     border: 1px dashed black;
-    /* Pour visualiser le z-index, on pourrait ajouter un élément derrière */
 }
 
 .visual-overflow-box {
@@ -291,14 +287,58 @@ body {
     color: #ccc;
 }
 
-/* --- Media Queries pour la responsivité des grilles --- */
-/* Les media queries sont complexes avec des tailles de grille dynamiques.
-   Je les laisse telles quelles pour une compatibilité, mais il faudrait
-   les ajuster précisément pour chaque gridSize si le rendu n'est pas parfait. */
+.hover-effect:hover {
+    background-color: steelblue !important;
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
 
-/* Ajustements pour les tailles de carte générales sur différentes grilles */
+.visual-flex-wrap {
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+.visual-align-self-parent {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    border: 1px dashed grey;
+    align-items: flex-start;
+    justify-content: space-around;
+    box-sizing: border-box;
+    padding: 5px;
+}
+
+.visual-align-self-child {
+    align-self: flex-end;
+    background-color: #ffcc99;
+    border: 1px solid orange;
+}
+
+.visual-overflow-ellipsis-box {
+    width: 90%;
+    height: 90%;
+    border: 1px solid #ccc;
+    font-size: 0.8em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-sizing: border-box;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.empty-card {
+    width: 100px;
+    height: 100px;
+    background-color: #f0f0f0;
+    visibility: hidden;
+}
+
 @media (max-width: 600px) {
-    .card {
+    .card, .empty-card {
         width: 80px;
         height: 80px;
     }
@@ -308,7 +348,7 @@ body {
 }
 
 @media (min-width: 601px) and (max-width: 900px) {
-    .card {
+    .card, .empty-card {
         width: 90px;
         height: 90px;
     }
@@ -318,30 +358,11 @@ body {
 }
 
 @media (min-width: 901px) {
-    .card {
+    .card, .empty-card {
         width: 100px;
         height: 100px;
     }
     .card-name-content {
         font-size: 0.9em;
     }
-}
-
-
-/* Surcharge pour s'assurer que les éléments visuels sont contenus */
-.card-visual-content > * {
-    max-width: 100%;
-    max-height: 100%;
-    overflow: hidden;
-    display: flex; /* Utile pour centrer le contenu interne des visuels */
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-/* Hover effect pour les cartes qui ont une transition */
-.hover-effect:hover {
-    background-color: steelblue !important; /* Exemple de changement de fond */
-    transform: scale(1.1); /* Exemple de transformation */
-    box-shadow: 0 0 15px rgba(0,0,0,0.3);
 }
