@@ -1,4 +1,3 @@
-// src/data.ts
 import type { CSSProperties } from "react";
 
 export interface DisplayOption {

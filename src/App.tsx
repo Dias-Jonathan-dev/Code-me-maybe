@@ -1,8 +1,8 @@
-import type React from "react"; // 'React' import est optionnel pour React 17+ avec JSX transform
+import type React from "react";
 import { useState } from "react";
 import GamePage from "./GamePage";
 import { allLevels } from "./data";
-import type { GameLevel } from "./data"; // <-- Correction ici: import type
+import type { GameLevel } from "./data";
 import "./styles.css";
 
 const App: React.FC = () => {

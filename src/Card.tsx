@@ -1,4 +1,3 @@
-// src/Card.tsx
 import type React from "react";
 import type { DisplayOption } from "./data";
 import "./styles.css";
@@ -11,7 +10,6 @@ interface CardProps {
   onClick: () => void;
 }
 
-// Fonction utilitaire pour rendre le contenu visuel en fonction du cardId
 const renderVisualContent = (cardId: string) => {
   const visualElements: Record<string, React.ReactNode> = {
     "font-size-2em": <span style={{ fontSize: "2em" }}>Texte Grand</span>,
