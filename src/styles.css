@@ -17,14 +17,23 @@ body {
   color: #333;
 }
 
+#root {
+  display: flex;
+  justify-content: center;
+}
+
 .app-container {
   text-align: center;
   background-color: #ffffff;
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  max-width: 90%;
+  max-width: 50vw;
+  min-height: 100vh;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .game-page h2 {
@@ -385,9 +394,7 @@ body.homepage-background {
 }
 
 .homepage {
-  position: relative;
-  min-height: 100vh;
-  padding-bottom: 60px; /* au moins la hauteur de ton footer */
+  height: 100vh;
 }
 
 .header-wallpaper {

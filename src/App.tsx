@@ -4,7 +4,7 @@ import GamePage from "./GamePage";
 import { allLevels } from "./data";
 import type { GameLevel } from "./data"; // <-- Correction ici: import type
 import "./styles.css";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const App: React.FC = () => {
   const [currentLevelIndex, setCurrentLevelIndex] = useState(0);
