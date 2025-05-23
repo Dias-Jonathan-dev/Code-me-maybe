@@ -1,0 +1,60 @@
+.homepage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.sectionbackground {
+
+    background-color: orange;
+    padding: 2vh 5vw;
+    border-radius: 10px;
+
+    h1 {
+        text-align: start;
+    }
+
+    p {
+        font-family: "jost", cursive;
+        font-weight: 400;
+        text-align: start;
+        color: #026c3d;
+        font-size: 16pt;
+    }
+}
+
+
+.buttonswtich {
+    font-family: "jost", cursive;
+    background: #fff;
+    color: #026c3d;
+    border-radius: 8px;
+    width: fit-content;
+    padding-inline: 1vw;
+    height: 40px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(2, 108, 61, 0.08);
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+}
+
+.buttonswtich:hover {
+    animation: bounce 0.4s;
+    box-shadow: 0 4px 16px rgba(2, 108, 61, 0.16);
+}
+
+@keyframes bounce {
+    0%   { transform: translateY(0);}
+    30%  { transform: translateY(-10px);}
+    50%  { transform: translateY(0);}
+    70%  { transform: translateY(-5px);}
+    100% { transform: translateY(0);}
+}

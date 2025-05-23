@@ -1,6 +1,6 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
-import { BrowserRouter, createBrowserRouter  } from "react-router-dom";
+import { createRoot } from "react-dom/client";
+import { RouterProvider, BrowserRouter, createBrowserRouter  } from "react-router-dom";
 import App from "./App";
 import HomePage from "./page/HomePage.tsx";
 
@@ -20,10 +20,7 @@ if (rootElement == null) {
     throw new Error(`Your HTML Document should contain a <div id="root"></div>`);
 }
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </React.StrictMode>,
+createRoot(rootElement).render(
+
+    <RouterProvider router={router} />
 );

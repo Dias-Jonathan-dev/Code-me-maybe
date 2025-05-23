@@ -19,9 +19,9 @@ button {
 }
 
 button:focus-visible {
-  outline: 2px solid #840b43; /* Couleur de focus personnalisée, par exemple la couleur de votre carte frontale */
-  outline-offset: 3px; /* Pour que le contour soit légèrement à l'extérieur du bouton */
-  border-radius: 10px; /* Assurez-vous que le focus suit le bord-radius de la carte */
+  outline: 2px solid #e5c38a;
+  outline-offset: 3px;
+  border-radius: 10px;
 }
 
 button:active {
@@ -36,10 +36,10 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-image: url("../assets/9056786.jpg");
+  background-image: url("../assets/14571410_5488054.jpg");
   background-blend-mode: lighten;
-  background-color: #026c3d;
-  background-size: cover;
+  background-color: #e5c38a;
+  background-size: contain;
   margin: 0;
   color: #333;
 }
@@ -54,7 +54,7 @@ h1 {
 
 .app-container {
   text-align: center;
-  background-color: #026c3d;
+  background-color: #055330;
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
@@ -139,7 +139,7 @@ h1 {
 }
 
 .card-front {
-  background-color: #840b43;
+  background-color: #e5c38a;
   color: #fff;
   font-size: 2.5em;
   font-weight: bold;
@@ -165,7 +165,7 @@ h1 {
   font-weight: 400;
   font-size: 18pt;
   letter-spacing: 1px;
-  color: #840b43;
+  color: #055330;
   word-break: break-word;
   text-align: left;
   padding: 2px;
@@ -207,7 +207,7 @@ h1 {
   box-sizing: border-box;
   font-size: 0.8em;
   background-color: white;
-  /* La bordure de 1px solid #ddd a été retirée ici */
+  color: #055330;
 }
 
 .visual-full-box {
@@ -404,7 +404,7 @@ h1 {
     width: 90vw;
     min-width: unset;
     max-width: 100vw;
-    padding: 0px 8px 8px 8px;
+    padding: 0 8px 8px 8px;
     border-radius: 0;
     box-shadow: none;
     position: absolute;

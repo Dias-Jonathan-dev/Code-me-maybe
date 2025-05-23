@@ -1,9 +1,10 @@
-import type React from "react"; // 'React' import est optionnel pour React 17+ avec JSX transform
+import type React from "react";
 import { useState } from "react";
 import GamePage from "./page/GamePage.tsx";
 import { allLevels } from "./data";
 import type { GameLevel } from "./data"; // <-- Correction ici: import type
 import "./css/styles.css";
+import "./css/home.css"
 import { useNavigate } from "react-router-dom";
 
 const App: React.FC = () => {

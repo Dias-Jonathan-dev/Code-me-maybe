@@ -19,30 +19,19 @@ function HomePage() {
 
   return (
     <div className="homepage">
-      <img
-        src="../assets/images/fond%20header_Plan%20de%20travail%201.svg"
-        alt="fond"
-        className="header-wallpaper"
-      />
-      <div className="homepage-text">
-        <div className="homepage-bienvenue">
-          <img
-            src="../assets/images/sun.svg"
-            alt="sun"
-            className="homepage-sun"
-          />
-          <h1>Code Me Maybe !</h1>
-          <img
-            src="../assets/images/glace.svg"
-            alt="glace"
-            className="homepage-ice"
-          />
-        </div>
-        <button type="button" onClick={handleClick}>
-          Start
-        </button>
-      </div>
-      <footer>Made with love</footer>
+     <div className="sectionbackground">
+      <h1>Code Me Maybe !</h1>
+        <p>Apprenez le CSS en jouant : le mémo interactif.</p>
+       <p style={{ fontSize: "12pt", color: "black" }}>Par Annick, Johnathan et Camille</p>
+
+         <button
+             type="button"
+             className="buttonswtich"
+             onClick={handleClick}
+         >
+             Commencez le jeu
+         </button>
+     </div>
     </div>
   );
 }
