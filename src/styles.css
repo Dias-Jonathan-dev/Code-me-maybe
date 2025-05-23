@@ -1,48 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Glass+Antiqua&family=Jost:ital@0;1&family=Kumbh+Sans:wght@100..900&family=Lusitana:wght@400;700&family=Nova+Mono&display=swap');
+
+#root {
+  width: 100VW;
+  height: 100vh;
+}
+
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Jost", sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #e0e7f2;
+  background-image: url("9056786.jpg");
+  background-blend-mode: lighten;
+  background-color: #026c3d;
+  background-size: cover;
   margin: 0;
   color: #333;
 }
 
+h1 {
+  font-size: 4rem;
+  letter-spacing: 3px;
+  color: white;
+  font-family: "Glass Antiqua", cursive;
+  font-weight: 400;
+}
+
 .app-container {
   text-align: center;
-  background-color: #ffffff;
-  padding: 30px;
+  background-color: #026c3d;
+  padding: 20px;
   border-radius: 12px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  max-width: 90%;
+  width: fit-content;
+  min-width: 600px;
   box-sizing: border-box;
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .game-page h2 {
-  color: #2c3e50;
-  margin-bottom: 20px;
+  color: white;
   font-size: 2.2em;
+  margin: 0;
 }
 
 .game-page p {
-  color: #555;
-  margin-bottom: 25px;
+  color: white;
   font-size: 1.1em;
+  margin-bottom: 5px;
 }
 
 .grid-container {
   display: grid;
-  gap: 12px;
+  gap: 4vh;
   padding: 10px;
   margin: 0 auto;
   justify-content: center;
   align-items: center;
+  font-family: "Glass Antiqua", cursive;
+  font-weight: 400;
+  font-size: 18pt;
 }
 
 .card {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   perspective: 1000px;
   cursor: pointer;
   border-radius: 10px;
@@ -87,7 +114,7 @@ body {
 }
 
 .card-front {
-  background-color: #5d5d81;
+  background-color: #840B43;
   color: #fff;
   font-size: 2.5em;
   font-weight: bold;
@@ -103,19 +130,19 @@ body {
 }
 
 .card.matched .card-back {
-  border-color: #4caf50;
-  box-shadow: 0 0 12px #4caf50;
+  border: solid 5px #f3e100;
+  box-shadow: 4px 2px 2px #f3e100;
 }
 
 .card-name-content {
+  letter-spacing: 1px;
   font-weight: bold;
-  color: #333;
+  color: #840B43;
   word-break: break-word;
-  text-align: center;
+  text-align: left;
   padding: 2px;
   display: block;
   line-height: 1.2;
-  font-size: 0.9em;
   width: 100%;
 }
 
@@ -345,6 +372,19 @@ body {
   .card-name-content {
     font-size: 0.7em;
   }
+.app-container {
+    width: 90vw;
+    min-width: unset;
+    max-width: 100vw;
+    padding: 0px 8px 8px 8px;
+    border-radius: 0;
+    box-shadow: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0 auto;
+  }
 }
 
 @media (min-width: 601px) and (max-width: 900px) {
@@ -355,16 +395,5 @@ body {
   }
   .card-name-content {
     font-size: 0.8em;
-  }
-}
-
-@media (min-width: 901px) {
-  .card,
-  .empty-card {
-    width: 100px;
-    height: 100px;
-  }
-  .card-name-content {
-    font-size: 0.9em;
   }
 }

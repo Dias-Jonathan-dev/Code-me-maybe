@@ -24,7 +24,6 @@ const App: React.FC = () => {
       <div className="app-container">
         <h1>Jeu de Paires CSS</h1>
         <p>Chargement des niveaux...</p>
-        {/* CORRECTION: Ajout de type="button" */}
         <button type="button" onClick={() => setCurrentLevelIndex(0)}>
           Recommencer
         </button>
@@ -34,7 +33,7 @@ const App: React.FC = () => {
 
   return (
     <div className="app-container">
-      <h1>Jeu de Paires CSS</h1>
+      <h1>Code me Maybe 𓆹</h1>
       <GamePage level={currentLevel} onLevelComplete={handleLevelComplete} />
     </div>
   );

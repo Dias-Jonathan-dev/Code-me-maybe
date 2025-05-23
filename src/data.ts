@@ -291,7 +291,6 @@ const allPossibleCssPairs: CssPair[] = [
       content: "Débordement Caché",
       style: {
         width: "80px",
-        height: "30px",
         overflow: "hidden",
         border: "1px solid grey",
         whiteSpace: "nowrap",
@@ -390,7 +389,7 @@ const allPossibleCssPairs: CssPair[] = [
       type: "visual",
       content: "Ombre Texte",
       style: {
-        textShadow: "2px 2px 4px black",
+        textShadow: "4px 4px 8px black",
         color: "white",
         backgroundColor: "transparent",
       },
