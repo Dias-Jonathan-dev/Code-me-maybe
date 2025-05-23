@@ -1,5 +1,5 @@
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 function HomePage() {
   const navigate = useNavigate();
@@ -20,20 +20,20 @@ function HomePage() {
   return (
     <div className="homepage">
       <img
-        src="src/assets/images/fond header_Plan de travail 1.svg"
+        src="../assets/images/fond%20header_Plan%20de%20travail%201.svg"
         alt="fond"
         className="header-wallpaper"
       />
       <div className="homepage-text">
         <div className="homepage-bienvenue">
           <img
-            src="src/assets/images/sun.svg"
+            src="../assets/images/sun.svg"
             alt="sun"
             className="homepage-sun"
           />
           <h1>Code Me Maybe !</h1>
           <img
-            src="src/assets/images/glace.svg"
+            src="../assets/images/glace.svg"
             alt="glace"
             className="homepage-ice"
           />

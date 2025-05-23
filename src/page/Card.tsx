@@ -1,7 +1,7 @@
 // src/Card.tsx
 import type React from "react";
-import type { DisplayOption } from "./data";
-import "./styles.css";
+import type { DisplayOption } from "../data.ts";
+import "../css/styles.css";
 
 interface CardProps {
   cardId: string;

@@ -1,8 +1,8 @@
 import type React from "react";
 import { useEffect, useRef, useState } from "react";
-import Card from "./Card";
-import type { CssPair, DisplayOption, GameLevel } from "./data"; // <-- Correction ici: import type
-import "./styles.css";
+import Card from "./Card.tsx";
+import type { CssPair, DisplayOption, GameLevel } from "../data.ts"; // <-- Correction ici: import type
+import "../css/styles.css";
 
 interface GamePageProps {
   level: GameLevel;
@@ -256,11 +256,7 @@ const GamePage: React.FC<GamePageProps> = ({ level, onLevelComplete }) => {
               Math.ceil((level.pairs.length * 2) / level.gridSize) -
             level.pairs.length * 2,
         }).map((_, i) => (
-          <div
-            key={`empty-${i}`}
-            className="empty-card"
-            aria-hidden="true"
-          ></div>
+          <div key={`empty-${i}`} className="empty-card" aria-hidden="true" />
         ))}
       </div>
     </div>

@@ -5,13 +5,38 @@
   height: 100vh;
 }
 
+button {
+  background: none;
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+}
+
+button:focus-visible {
+  outline: 2px solid #840b43; /* Couleur de focus personnalisée, par exemple la couleur de votre carte frontale */
+  outline-offset: 3px; /* Pour que le contour soit légèrement à l'extérieur du bouton */
+  border-radius: 10px; /* Assurez-vous que le focus suit le bord-radius de la carte */
+}
+
+button:active {
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
 body {
   font-family: "Jost", sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-image: url("9056786.jpg");
+  background-image: url("../assets/9056786.jpg");
   background-blend-mode: lighten;
   background-color: #026c3d;
   background-size: cover;
@@ -125,18 +150,21 @@ h1 {
   background-color: #fcfcfc;
   color: #333;
   transform: rotateY(180deg);
-  border: 2px solid #ddd;
   transition: border-color 0.3s ease;
 }
 
 .card.matched .card-back {
   border: solid 5px #f3e100;
-  box-shadow: 4px 2px 2px #f3e100;
+  box-shadow:
+  0 0 0 5px #f3e100,
+  0 0 15px rgba(243, 225, 0, 0.7);
 }
 
 .card-name-content {
+  font-family: "Glass Antiqua", cursive;
+  font-weight: 400;
+  font-size: 18pt;
   letter-spacing: 1px;
-  font-weight: bold;
   color: #840b43;
   word-break: break-word;
   text-align: left;
@@ -178,8 +206,8 @@ h1 {
   align-items: center;
   box-sizing: border-box;
   font-size: 0.8em;
-  border: 1px solid #ddd;
   background-color: white;
+  /* La bordure de 1px solid #ddd a été retirée ici */
 }
 
 .visual-full-box {
