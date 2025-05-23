@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import confetti from "canvas-confetti";
 
@@ -11,7 +10,7 @@ function launchConfetti(): void {
   });
 }
 
-function EndPage(): JSX.Element {
+function EndPage() {
   const [gameFinished, setGameFinished] = useState<boolean>(false);
   const navigate = useNavigate();
 

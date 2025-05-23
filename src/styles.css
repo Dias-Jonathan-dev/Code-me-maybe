@@ -371,6 +371,55 @@ body {
   visibility: hidden;
 }
 
+/* ---------- Home Page ---------- */
+
+body.homepage-background {
+  background-color: #f0832f;
+}
+
+.homepage {
+  height: 100vh;
+}
+
+.header-wallpaper {
+  width: 100vw;
+}
+
+.homepage-text {
+  text-align: center;
+}
+
+.homepage-sun {
+  height: 15vh;
+}
+
+.homepage-ice {
+  height: 15vh;
+}
+
+.homepage-welcome {
+  width: 25vw;
+  margin: 0 5vw;
+}
+
+.homepage-text button {
+  background-color: #02875a;
+  border-radius: 50px;
+  margin-top: 8vh;
+  padding: 15px 40px;
+}
+
+.homepage-text h1 {
+  margin: 4vh 4vw;
+  display: inline-block;
+}
+
+.homepage-bienvenue {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 @media (max-width: 600px) {
   .card,
   .empty-card {
