@@ -412,6 +412,7 @@ body.homepage-background {
 .homepage-text h1 {
   margin: 4vh 4vw;
   display: inline-block;
+  font-family: "Chewy", system-ui;
 }
 
 .homepage-bienvenue {
