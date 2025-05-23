@@ -11,6 +11,11 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --primary-color: #f0832f;
+  --secondary-color: #522101;
+  --green-button: #02875a;
+  --font-text: "Chewy", system-ui;
 }
 
 a {
@@ -33,6 +38,8 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  font-family: var(--font-text);
+  color: var(--primary-color);
 }
 
 button {
