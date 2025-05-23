@@ -1,4 +1,3 @@
-// src/Card.tsx
 import type React from "react";
 import type { DisplayOption } from "../data.ts";
 import "../css/styles.css";
@@ -11,7 +10,6 @@ interface CardProps {
   onClick: () => void;
 }
 
-// Fonction utilitaire pour rendre le contenu visuel en fonction du cardId
 const renderVisualContent = (cardId: string) => {
   const visualElements: Record<string, React.ReactNode> = {
     "font-size-2em": <span style={{ fontSize: "2em" }}>Texte Grand</span>,
@@ -205,22 +203,18 @@ const Card: React.FC<CardProps> = ({
   }`;
 
   const renderCardContent = () => {
-    // Si la prop 'display' est undefined ou null (ce qui peut arriver avec l'erreur "display is undefined")
     if (!display) {
       return null;
     }
 
-    // Si la carte est de type 'name' et qu'elle doit afficher un style visuel (niveau 3+)
     if (display.type === "name" && Object.keys(display.style).length > 0) {
       return (
         <div className="card-visual-content" style={display.style}>
           <div className="card-name-overlay">{display.content || ""}</div>
           {renderVisualContent(cardId)}{" "}
-          {/* Utilisation de la fonction utilitaire */}
         </div>
       );
     }
-    // Si la carte est de type 'name' sans style visuel (niveaux 1 et 2)
     if (display.type === "name") {
       return (
         <div className="card-name-content" style={display.style}>
@@ -228,11 +222,9 @@ const Card: React.FC<CardProps> = ({
         </div>
       );
     }
-    // Si la carte est de type 'visual'
     return (
       <div className="card-visual-content" style={display.style}>
         {renderVisualContent(cardId)}{" "}
-        {/* Utilisation de la fonction utilitaire */}
       </div>
     );
   };
@@ -242,7 +234,6 @@ const Card: React.FC<CardProps> = ({
       type="button"
       className={cardClassName}
       onClick={onClick}
-      // Plus besoin de onKeyDown ni de role ni de tabIndex
     >
       <div className="card-inner">
         <div className="card-front" />

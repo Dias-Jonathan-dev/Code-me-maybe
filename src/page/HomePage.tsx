@@ -8,10 +8,8 @@ function HomePage() {
   };
 
   useEffect(() => {
-    // Ajoute une classe sur body quand HomePage monte
     document.body.classList.add("homepage-background");
 
-    // Enlève la classe quand HomePage démonte
     return () => {
       document.body.classList.remove("homepage-background");
     };

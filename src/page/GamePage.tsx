@@ -1,7 +1,7 @@
 import type React from "react";
 import { useEffect, useRef, useState } from "react";
 import Card from "./Card.tsx";
-import type { CssPair, DisplayOption, GameLevel } from "../data.ts"; // <-- Correction ici: import type
+import type { CssPair, DisplayOption, GameLevel } from "../data.ts";
 import "../css/styles.css";
 
 interface GamePageProps {
@@ -17,7 +17,6 @@ interface GridCardState {
   isMatched: boolean;
 }
 
-// CORRECTION: Ajout d'une virgule après T pour éviter l'ambiguïté JSX
 const shuffleArray = <T,>(array: T[]): T[] => {
   let currentIndex = array.length,
     randomIndex;
@@ -37,7 +36,6 @@ const generateLevelCards = (level: GameLevel): GridCardState[] => {
   const pairsToUse = level.pairs;
 
   pairsToUse.forEach((pair, index) => {
-    // Carte pour le nom de la propriété CSS
     cards.push({
       originalId: pair.id,
       uniqueId: `${pair.id}-name-${index}-${Math.random()}`,
@@ -48,16 +46,15 @@ const generateLevelCards = (level: GameLevel): GridCardState[] => {
           ? pair.visualCard.style
           : pair.nameCard.style,
       },
-      isFlipped: true, // La carte "nom" est Flipped par défaut (visible)
+      isFlipped: true,
       isMatched: false,
     });
 
-    // Carte pour la représentation visuelle
     cards.push({
       originalId: pair.id,
       uniqueId: `${pair.id}-visual-${index}-${Math.random()}`,
       display: pair.visualCard,
-      isFlipped: false, // La carte "visuelle" n'est PAS flipped par défaut (face cachée)
+      isFlipped: false,
       isMatched: false,
     });
   });
@@ -96,7 +93,6 @@ const GamePage: React.FC<GamePageProps> = ({ level, onLevelComplete }) => {
       const isNameCard2 = card2.display.type === "name";
 
       let matched = false;
-      // Une paire est valide si une est 'name', l'autre 'visual', et leurs originalId correspondent
       if (
         (isNameCard1 &&
           !isNameCard2 &&
@@ -115,14 +111,12 @@ const GamePage: React.FC<GamePageProps> = ({ level, onLevelComplete }) => {
           ),
         );
         setMatchesFound((prev) => prev + 1);
-        setFlippedCards([]); // Réinitialise les cartes sélectionnées
+        setFlippedCards([]);
         setIsChecking(false);
       } else {
         timeoutRef.current = setTimeout(() => {
           setCards((prevCards) =>
             prevCards.map((card, idx) => {
-              // Si la carte n'est PAS une carte 'name' et n'est PAS matched, la retourner
-              // Cela signifie que seules les cartes 'visual' non-matched se retournent.
               if (
                 (idx === index1 || idx === index2) &&
                 card.display.type !== "name" &&
@@ -133,7 +127,7 @@ const GamePage: React.FC<GamePageProps> = ({ level, onLevelComplete }) => {
               return card;
             }),
           );
-          setFlippedCards([]); // Réinitialise les cartes sélectionnées
+          setFlippedCards([]);
           setIsChecking(false);
         }, 1200);
       }
@@ -159,28 +153,20 @@ const GamePage: React.FC<GamePageProps> = ({ level, onLevelComplete }) => {
   const handleCardClick = (index: number) => {
     const clickedCard = cards[index];
 
-    // Empêcher le clic si une vérification est en cours
     if (isChecking) {
       return;
     }
 
-    // Empêcher le clic si la carte est déjà trouvée
     if (clickedCard.isMatched) {
       return;
     }
 
-    // Empêcher de cliquer une carte qui est déjà dans 'flippedCards' pour cette tentative de paire
     if (flippedCards.includes(index)) {
       return;
     }
 
-    // --- Logique pour ajouter la carte aux 'flippedCards' ---
 
-    // Si c'est le premier clic de la paire
     if (flippedCards.length === 0) {
-      // Nous voulons que la carte "nom" puisse être le premier clic si l'utilisateur la sélectionne.
-      // Et la carte "visuelle" si l'utilisateur la sélectionne.
-      // Ne retourner visuellement que si c'est une carte 'visual' face cachée
       setCards((prevCards) =>
         prevCards.map((card, idx) =>
           idx === index && card.display.type === "visual"
@@ -190,23 +176,18 @@ const GamePage: React.FC<GamePageProps> = ({ level, onLevelComplete }) => {
       );
       setFlippedCards([index]);
     }
-    // Si c'est le deuxième clic de la paire
     else if (flippedCards.length === 1) {
       const firstFlippedIndex = flippedCards[0];
       const firstFlippedCard = cards[firstFlippedIndex];
 
-      // Empêcher de cliquer la même carte deux fois
       if (index === firstFlippedIndex) {
         return;
       }
 
-      // Vérifier si la combinaison de types est valide (un nom et un visuel)
       const isFirstName = firstFlippedCard.display.type === "name";
       const isClickedName = clickedCard.display.type === "name";
 
       if ((isFirstName && !isClickedName) || (!isFirstName && isClickedName)) {
-        // La combinaison de types est valide (nom + visuel ou visuel + nom)
-        // Retourner la deuxième carte cliquée (qu'elle soit name ou visual)
         setCards((prevCards) =>
           prevCards.map((card, idx) =>
             idx === index ? { ...card, isFlipped: true } : card,
@@ -214,9 +195,6 @@ const GamePage: React.FC<GamePageProps> = ({ level, onLevelComplete }) => {
         );
         setFlippedCards((prevFlipped) => [...prevFlipped, index]);
       } else {
-        // La combinaison de types n'est pas valide (deux noms ou deux visuels)
-        // On retourne quand même la deuxième carte pour la montrer brièvement,
-        // puis le useEffect la remettra face cachée si c'est une carte 'visual'.
         setCards((prevCards) =>
           prevCards.map((card, idx) =>
             idx === index ? { ...card, isFlipped: true } : card,
@@ -249,7 +227,6 @@ const GamePage: React.FC<GamePageProps> = ({ level, onLevelComplete }) => {
             onClick={() => handleCardClick(index)}
           />
         ))}
-        {/* Correction pour les "empty cards" - assurez-vous que cela fonctionne comme prévu avec votre CSS */}
         {Array.from({
           length:
             level.gridSize *
