@@ -1,5 +1,4 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -12,7 +11,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --primary-color: #f0832f;
+  --primary-color: #ace2f0;
   --secondary-color: #522101;
   --green-button: #02875a;
   --font-text: "Chewy", system-ui;
@@ -38,7 +37,6 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
-  font-family: var(--font-text);
   color: var(--primary-color);
 }
 

@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&display=swap");
 
+/* :root {
+
+} */
+
 body {
   font-family: "DynaPuff", system-ui;
   font-optical-sizing: auto;
@@ -112,7 +116,7 @@ body {
 }
 
 .card-front {
-  background-color: var(--secondary-color);
+  background-color: #743308;
   color: #fff;
   font-size: 2.5em;
   font-weight: bold;
@@ -394,15 +398,33 @@ body.homepage-background {
 }
 
 .homepage {
+  position: relative;
+  overflow: hidden;
   height: 100vh;
 }
 
 .header-wallpaper {
-  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.3; /* ajuste l’opacité ici (0 = transparent, 1 = opaque) */
+  z-index: 1;
+  pointer-events: none; /* pour que les clics passent à travers */
+  border-radius: 400px;
 }
 
 .homepage-text {
-  text-align: center;
+  position: relative;
+  z-index: 2;
+  /* Optionnel : pour centrer le texte */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
 }
 
 .homepage-sun {
@@ -419,16 +441,59 @@ body.homepage-background {
 }
 
 button {
-  background-color: var(--green-button);
+  font-family: "DynaPuff", system-ui;
   border-radius: 50px;
-  padding: 15px 40px;
+  padding: 22px 60px; /* Augmente le padding */
+  font-size: 2em; /* Augmente la taille du texte */
+  min-width: 220px; /* Largeur minimale optionnelle */
 }
 
+@keyframes shake {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  10% {
+    transform: translate(-2px, 2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-2px, -2px) rotate(1deg);
+  }
+  30% {
+    transform: translate(2px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(2px, -2px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-2px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-2px, -2px) rotate(0deg);
+  }
+  70% {
+    transform: translate(2px, 2px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-2px, -2px) rotate(1deg);
+  }
+  90% {
+    transform: translate(2px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
 .homepage-text h1 {
   margin: 7vh 4vw;
-  color: #522101;
+  font-size: 5em;
+  color: #743308;
   display: inline-block;
-  font-family: var(--font-text);
+  font-family: "DynaPuff", system-ui;
+  /* ...tes styles existants... */
+}
+
+.shake {
+  animation: shake 0.7s;
 }
 
 .homepage-bienvenue {
@@ -444,7 +509,7 @@ button {
   width: 100%;
   background-color: var(--secondary-color);
   color: white;
-  font-family: "Chewy", system-ui;
+  font-family: "DynaPuff", system-ui;
   text-align: center;
   padding: 10px 0;
 }

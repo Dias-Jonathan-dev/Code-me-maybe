@@ -1,7 +1,7 @@
 import type React from "react";
 import { useEffect, useRef, useState } from "react";
 import Card from "./Card";
-import type { CssPair, DisplayOption, GameLevel } from "./data"; // <-- Correction ici: import type
+import type { DisplayOption, GameLevel } from "./data"; // <-- Correction ici: import type
 import "./styles.css";
 
 interface GamePageProps {
