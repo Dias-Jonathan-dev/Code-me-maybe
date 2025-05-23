@@ -1,4 +1,3 @@
-// src/GamePage.tsx
 import type React from "react";
 import { useEffect, useRef, useState } from "react";
 import Card from "./Card";
