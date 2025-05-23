@@ -256,7 +256,11 @@ const GamePage: React.FC<GamePageProps> = ({ level, onLevelComplete }) => {
               Math.ceil((level.pairs.length * 2) / level.gridSize) -
             level.pairs.length * 2,
         }).map((_, i) => (
-          <div key={`empty-${i}`} className="empty-card"></div>
+          <div
+            key={`empty-${i}`}
+            className="empty-card"
+            aria-hidden="true"
+          ></div>
         ))}
       </div>
     </div>

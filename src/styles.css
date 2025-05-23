@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Glass+Antiqua&family=Jost:ital@0;1&family=Kumbh+Sans:wght@100..900&family=Lusitana:wght@400;700&family=Nova+Mono&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Glass+Antiqua&family=Jost:ital@0;1&family=Kumbh+Sans:wght@100..900&family=Lusitana:wght@400;700&family=Nova+Mono&display=swap");
 
 #root {
-  width: 100VW;
+  width: 100vw;
   height: 100vh;
 }
 
@@ -114,7 +114,7 @@ h1 {
 }
 
 .card-front {
-  background-color: #840B43;
+  background-color: #840b43;
   color: #fff;
   font-size: 2.5em;
   font-weight: bold;
@@ -137,7 +137,7 @@ h1 {
 .card-name-content {
   letter-spacing: 1px;
   font-weight: bold;
-  color: #840B43;
+  color: #840b43;
   word-break: break-word;
   text-align: left;
   padding: 2px;
@@ -372,7 +372,7 @@ h1 {
   .card-name-content {
     font-size: 0.7em;
   }
-.app-container {
+  .app-container {
     width: 90vw;
     min-width: unset;
     max-width: 100vw;

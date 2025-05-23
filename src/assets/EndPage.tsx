@@ -1,6 +1,6 @@
+import confetti from "canvas-confetti";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import confetti from "canvas-confetti";
 
 function launchConfetti(): void {
   confetti({
