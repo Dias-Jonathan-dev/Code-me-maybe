@@ -1,11 +1,18 @@
 /* src/styles.css */
+:root {
+  --primary-color: #f0832f;
+  --secondary-color: #522101;
+  --green-button: #02875a;
+  --font-text: "Chewy", system-ui;
+}
+
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #e0e7f2;
+  background-color: var(--primary-color);
   margin: 0;
   color: #333;
 }
@@ -96,7 +103,7 @@ body {
 }
 
 .card-front {
-  background-color: #5d5d81;
+  background-color: var(--secondary-color);
   color: #fff;
   font-size: 2.5em;
   font-weight: bold;
@@ -374,11 +381,13 @@ body {
 /* ---------- Home Page ---------- */
 
 body.homepage-background {
-  background-color: #f0832f;
+  background-color: var(--primary-color);
 }
 
 .homepage {
-  height: 100vh;
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 60px; /* au moins la hauteur de ton footer */
 }
 
 .header-wallpaper {
@@ -402,23 +411,66 @@ body.homepage-background {
   margin: 0 5vw;
 }
 
-.homepage-text button {
-  background-color: #02875a;
+button {
+  background-color: var(--green-button);
   border-radius: 50px;
-  margin-top: 8vh;
   padding: 15px 40px;
 }
 
 .homepage-text h1 {
-  margin: 4vh 4vw;
+  margin: 7vh 4vw;
+  color: #522101;
   display: inline-block;
-  font-family: "Chewy", system-ui;
+  font-family: var(--font-text);
 }
 
 .homepage-bienvenue {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.homepage footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--secondary-color);
+  color: white;
+  font-family: "Chewy", system-ui;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.homepage-sun,
+.homepage-ice {
+  animation: floatRotateZoom 3s ease-in-out infinite;
+  transition: transform 0.3s ease;
+  transform-origin: center center; /* pour pivoter autour du centre */
+}
+
+/* ---------- End Page ---------- */
+
+.end-page-container {
+  height: 100vh;
+}
+
+@keyframes floatRotateZoom {
+  0% {
+    transform: rotate(-12deg) scale(1);
+  }
+  25% {
+    transform: rotate(0deg) scale(1.05);
+  }
+  50% {
+    transform: rotate(12deg) scale(1);
+  }
+  75% {
+    transform: rotate(0deg) scale(0.95);
+  }
+  100% {
+    transform: rotate(-12deg) scale(1);
+  }
 }
 
 @media (max-width: 600px) {

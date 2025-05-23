@@ -42,6 +42,7 @@ function HomePage() {
           Start
         </button>
       </div>
+      <footer>Made with love</footer>
     </div>
   );
 }

@@ -4,16 +4,18 @@ import GamePage from "./GamePage";
 import { allLevels } from "./data";
 import type { GameLevel } from "./data"; // <-- Correction ici: import type
 import "./styles.css";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const App: React.FC = () => {
   const [currentLevelIndex, setCurrentLevelIndex] = useState(0);
+
+  const navigate = useNavigate();
 
   const handleLevelComplete = () => {
     if (currentLevelIndex < allLevels.length - 1) {
       setCurrentLevelIndex((prevIndex) => prevIndex + 1);
     } else {
-      alert("Félicitations ! Vous avez terminé tous les niveaux !");
-      setCurrentLevelIndex(0);
+      navigate("/end");
     }
   };
 
