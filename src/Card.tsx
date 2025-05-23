@@ -1,3 +1,4 @@
+// src/Card.tsx
 import type React from "react";
 import type { DisplayOption } from "./data";
 import "./styles.css";
@@ -10,6 +11,7 @@ interface CardProps {
   onClick: () => void;
 }
 
+// Fonction utilitaire pour rendre le contenu visuel en fonction du cardId
 const renderVisualContent = (cardId: string) => {
   const visualElements: Record<string, React.ReactNode> = {
     "font-size-2em": <span style={{ fontSize: "2em" }}>Texte Grand</span>,
@@ -236,29 +238,19 @@ const Card: React.FC<CardProps> = ({
   };
 
   return (
-    <div
+    <button
+      type="button"
       className={cardClassName}
       onClick={onClick}
-      onKeyDown={(e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          onClick();
-        }
-      }}
-      role="button"
-      tabIndex={0}
+      // Plus besoin de onKeyDown ni de role ni de tabIndex
     >
       <div className="card-inner">
         <div className="card-front" />
-        <div
-          className="card-back"
-          // Applique le style de display.style à la face arrière
-          // Ceci est important pour les cartes 'visual' ou les cartes 'name' avec style visuel
-          style={display.style}
-        >
+        <div className="card-back" style={display.style}>
           {renderCardContent()}
         </div>
       </div>
-    </div>
+    </button>
   );
 };
 
