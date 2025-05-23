@@ -43,7 +43,7 @@ function HomePage() {
             alt="sun"
             className="homepage-sun"
           /> */}
-          <h1 ref={h1Ref}>Code Me Baby !</h1>
+          <h1 ref={h1Ref}>Code Me Maybe !</h1>
           {/* <img
             src="src/assets/images/glace.svg"
             alt="glace"
