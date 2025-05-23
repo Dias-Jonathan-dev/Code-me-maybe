@@ -38,7 +38,7 @@ const App: React.FC = () => {
   if (!currentLevel) {
     return (
       <div className="app-container">
-        <h1>Code Me Baby</h1>
+        <h1>Code Me Maybe</h1>
         <p>Chargement des niveaux...</p>
         <button type="button" onClick={() => setCurrentLevelIndex(0)}>
           Recommencer
@@ -54,10 +54,10 @@ const App: React.FC = () => {
       </audio>
       {!musicStarted && (
         <button type="button" onClick={playMusic}>
-          Lancer la musique
+          Musique maestro!
         </button>
       )}
-      <h1>Code Me Baby</h1>
+      <h1>Code Me Maybe</h1>
       <GamePage level={currentLevel} onLevelComplete={handleLevelComplete} />
     </div>
   );
