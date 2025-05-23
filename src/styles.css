@@ -1,21 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&display=swap");
+
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "DynaPuff", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #e0e7f2;
+  background-color: #ace2f0;
   margin: 0;
   color: #333;
 }
-
 .app-container {
   text-align: center;
   background-color: #ffffff;
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  max-width: 90%;
+  max-width: 100%;
   box-sizing: border-box;
 }
 
@@ -81,7 +86,7 @@ body {
   padding: 8px;
   box-sizing: border-box;
   overflow: hidden;
-  font-size: 0.9em;
+  font-size: 0.7em;
   font-weight: 500;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
@@ -330,8 +335,8 @@ body {
 }
 
 .empty-card {
-  width: 100px;
-  height: 100px;
+  width: 140px;
+  height: 140px;
   background-color: #f0f0f0;
   visibility: hidden;
 }
